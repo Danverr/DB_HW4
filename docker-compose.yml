@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+
+  db-library:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "MARYAKHIN_205"
+      POSTGRES_USER: "MARYAKHIN_205"
+      POSTGRES_PASSWORD: "MARYAKHIN_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/data/library:/var/lib/postgresql/data
+      - ./docker/db/scripts/library:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+
+  db-hospital:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "MARYAKHIN_205"
+      POSTGRES_USER: "MARYAKHIN_205"
+      POSTGRES_PASSWORD: "MARYAKHIN_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/data/hospital:/var/lib/postgresql/data
+      - ./docker/db/scripts/hospital:/docker-entrypoint-initdb.d
+    ports:
+      - "5433:5432"
+
+  db-trains:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "MARYAKHIN_205"
+      POSTGRES_USER: "MARYAKHIN_205"
+      POSTGRES_PASSWORD: "MARYAKHIN_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/data/trains:/var/lib/postgresql/data
+      - ./docker/db/scripts/trains:/docker-entrypoint-initdb.d
+    ports:
+      - "5434:5432"
